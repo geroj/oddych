@@ -7,14 +7,14 @@ using UnityEngine.Networking;
 namespace Oddych
 {
 	/// <summary>
-	/// It performs simple test for retrieving data from web server using GET method
+	/// It performs simple test for sending data to web server using POST method and receiving answer
 	/// </summary>
-	public class WebRequestGetTest : MonoBehaviour
+	public class PostMethod : MonoBehaviour
 	{
 		/*******************
 		 * Initialization
 		 * ****************/
-		public WebRequestGetTest ()
+		public PostMethod ()
 		{
 		}
 
@@ -32,23 +32,26 @@ namespace Oddych
 		}
 
 		/// <summary>
-		/// Start getting data from specified url
+		/// Start sending data to specified url
 		/// </summary>
 		/// <param name="url">URL to server</param>
 		public void Start(String url){
-			StartCoroutine(GetText(url));
+			StartCoroutine(PostText(url));
 		}
 
 		/*******************
 		 * Implementation
 		 * ****************/
 		/// <summary>
-		/// Gets the text from specified url
+		/// send text to specified URL
 		/// </summary>
-		/// <returns>Data from weberver, or error</returns>
+		/// <returns>Data to webserver, or error</returns>
 		/// <param name="url">URL to server</param>
-		IEnumerator GetText(String url){
-			UnityWebRequest www = UnityWebRequest.Get (url);
+		IEnumerator PostText(String url){
+
+			const String _WEBDATA = 
+				"{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"some fancy title by Ondrej Mikulas\"}";
+			UnityWebRequest www = UnityWebRequest.Post (url, _WEBDATA);
 			Result = www;
 			www.Send ();
 			while (!www.isDone) {
@@ -56,6 +59,7 @@ namespace Oddych
 			}
 
 			Hashtable ht = ProcessJsonData (www.downloadHandler.text);
+			print ("sprava bola odoslana");
 			//yield return www.Send ();
 
 			if (www.isError) {
@@ -76,6 +80,7 @@ namespace Oddych
 				//IList resultsIList = MiniJSON.Json.Deserialize (jsonDataResults) as IList;
 				int length = jsonDataResults.Length;
 				print ("return value length from JSON= " + length + " characters.");
+				print ("metoda post vratila " + jsonDataResults);
 			}
 			return new Hashtable ();
 		}

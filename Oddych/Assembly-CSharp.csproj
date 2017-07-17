@@ -47,7 +47,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Src\RestManagerTest.cs" />
-     <Compile Include="Assets\Src\WebRequests\WebRequestsGetTest.cs" />
+     <Compile Include="Assets\Src\WebRequests\GetMethod.cs" />
+     <Compile Include="Assets\Src\WebRequests\PostMethod.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
