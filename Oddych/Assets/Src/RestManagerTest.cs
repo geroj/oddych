@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+
 
 namespace Oddych{
 	/// <summary>
@@ -15,16 +17,33 @@ namespace Oddych{
 		// Use this for initialization
 		void Start () {
 			Debug.Log("Starting stuff...\n", gameObject);
-			SendGetRequest ();
-			Debug.Log("After GET request\n", gameObject);
+			//SendGetRequest ();
+			//Debug.Log("After GET request\n", gameObject);
 			//SendPostRequest ();
 			//Debug.Log("After POST request\n", gameObject);
 			//SendDeleteRequest ();
 			//Debug.Log("After DELETE request\n", gameObject);
+
+			Debug.Log ("before Get NEW");
+			SendGetRequestNew();
+			Debug.Log ("after Get NEW");
 		}
 
 		// Update is called once per frame
 		void Update () {
+		}
+
+		void SendGetRequestNew(){
+			GetMethod test = gameObject.AddComponent<GetMethod>();
+			const String _URL = "http://jsonplaceholder.typicode.com/comments?postId=1";
+			UnityWebRequest result = test.StartNew(_URL);
+
+			//if (result.downloadHandler.text == null) {
+			//	print ("GET NEW null");
+			//}
+			print (result.downloadHandler.text.Length);
+			print ("GET NEW result" + result.downloadHandler.text);
+			Debug.Log ("End of GetRequestNow");
 		}
 
 		void SendGetRequest(){

@@ -39,9 +39,34 @@ namespace Oddych
 			StartCoroutine(GetText(url));
 		}
 
+		public UnityWebRequest StartNew(String url){
+			UnityWebRequest res = null;
+			StartCoroutine (GetText(url, result => res = result));
+			return res;
+		}
+
 		/*******************
 		 * Implementation
 		 * ****************/
+
+		IEnumerator GetText(String url, Action<UnityWebRequest> result){
+			if(String.IsNullOrEmpty(url)) { yield break; }
+			UnityWebRequest www = UnityWebRequest.Get (url);
+			www.Send ();
+			yield return null;
+			result(www);
+
+			print (www.downloadHandler.isDone);
+			if(string.IsNullOrEmpty(www.error) == false)
+			{
+				Debug.Log (url + " " + www.error);
+				result(null);
+				yield break;
+			}
+			//yield break;
+		}
+
+
 		/// <summary>
 		/// Gets the text from specified url
 		/// </summary>
