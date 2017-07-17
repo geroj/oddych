@@ -9,12 +9,12 @@ namespace Oddych
 	/// <summary>
 	/// It performs simple test for retrieving data from web server using GET method
 	/// </summary>
-	public class GetMethod : MonoBehaviour
+	public class DeleteMethod : MonoBehaviour
 	{
 		/*******************
 		 * Initialization
 		 * ****************/
-		public GetMethod ()
+		public DeleteMethod ()
 		{
 		}
 
@@ -36,19 +36,19 @@ namespace Oddych
 		/// </summary>
 		/// <param name="url">URL to server</param>
 		public void Start(String url){
-			StartCoroutine(GetText(url));
+			StartCoroutine(Delete(url));
 		}
 
 		/*******************
 		 * Implementation
 		 * ****************/
 		/// <summary>
-		/// Gets the text from specified url
+		/// Deletes data from specified URL
 		/// </summary>
-		/// <returns>Data from weberver, or error</returns>
+		/// <returns>status if operation was executedsuccessfully.</returns>
 		/// <param name="url">URL to server</param>
-		IEnumerator GetText(String url){
-			UnityWebRequest www = UnityWebRequest.Get (url);
+		IEnumerator Delete(String url){
+			UnityWebRequest www = UnityWebRequest.Delete (url);
 			Result = www;
 			www.Send ();
 			while (!www.isDone) {
@@ -77,7 +77,7 @@ namespace Oddych
 				//IList resultsIList = MiniJSON.Json.Deserialize (jsonDataResults) as IList;
 				int length = jsonDataResults.Length;
 				print ("return value length from JSON= " + length + " characters.");
-				print ("metoda GET vratila " + jsonDataResults);
+				print ("metoda DELETE vratila " + jsonDataResults);
 			}
 			return new Hashtable ();
 		}

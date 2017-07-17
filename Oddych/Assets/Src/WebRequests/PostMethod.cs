@@ -35,8 +35,8 @@ namespace Oddych
 		/// Start sending data to specified url
 		/// </summary>
 		/// <param name="url">URL to server</param>
-		public void Start(String url){
-			StartCoroutine(PostText(url));
+		public void Start(String url, String data){
+			StartCoroutine(PostText(url, data));
 		}
 
 		/*******************
@@ -47,11 +47,10 @@ namespace Oddych
 		/// </summary>
 		/// <returns>Data to webserver, or error</returns>
 		/// <param name="url">URL to server</param>
-		IEnumerator PostText(String url){
+		IEnumerator PostText(String url, String data){
 
-			const String _WEBDATA = 
-				"{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"some fancy title by Ondrej Mikulas\"}";
-			UnityWebRequest www = UnityWebRequest.Post (url, _WEBDATA);
+
+			UnityWebRequest www = UnityWebRequest.Post (url, data);
 			Result = www;
 			www.Send ();
 			while (!www.isDone) {
@@ -80,7 +79,7 @@ namespace Oddych
 				//IList resultsIList = MiniJSON.Json.Deserialize (jsonDataResults) as IList;
 				int length = jsonDataResults.Length;
 				print ("return value length from JSON= " + length + " characters.");
-				print ("metoda post vratila " + jsonDataResults);
+				print ("metoda POST vratila " + jsonDataResults);
 			}
 			return new Hashtable ();
 		}
