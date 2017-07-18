@@ -17,16 +17,17 @@ namespace Oddych{
 		// Use this for initialization
 		void Start () {
 			Debug.Log("Starting stuff...\n", gameObject);
-			//SendGetRequest ();
-			//Debug.Log("After GET request\n", gameObject);
+			SendGetRequest ();
+			Debug.Log("After GET request\n", gameObject);
 			//SendPostRequest ();
 			//Debug.Log("After POST request\n", gameObject);
 			//SendDeleteRequest ();
 			//Debug.Log("After DELETE request\n", gameObject);
 
-			Debug.Log ("before Get NEW");
-			SendGetRequestNew();
-			Debug.Log ("after Get NEW");
+			//TODO test
+			//Debug.Log ("before Get NEW");
+			//SendGetRequestNew();
+			//Debug.Log ("after Get NEW");
 		}
 
 		// Update is called once per frame
@@ -51,7 +52,13 @@ namespace Oddych{
 			//const String _URL = "http://jsonplaceholder.typicode.com/posts";
 			const String _URL = "http://jsonplaceholder.typicode.com/comments?postId=1";
 			test.Start(_URL);
-			Debug.Log ("som tu");
+
+			//TODO zmenit aktivne cakanie na optional aktivne cakanie s vyuzitim features jobs, coroutines, 
+			//async operations
+			while (!test.Result.isDone) {
+			}
+
+			Debug.Log ("som tu a result je " + test.Result.downloadHandler.text);
 		}
 
 		void SendPostRequest(){
