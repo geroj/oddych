@@ -28,4 +28,3 @@ C:\repos\Oddych\Temp\bin\Debug\UnityEngine.HoloLens.xml
 C:\repos\Oddych\Temp\bin\Debug\UnityEngine.VR.xml
 C:\repos\Oddych\obj\Debug\Assembly-CSharp.dll
 C:\repos\Oddych\obj\Debug\Assembly-CSharp.pdb
-C:\repos\Oddych\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache

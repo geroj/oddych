@@ -16,9 +16,9 @@ namespace Oddych{
 		 * *********************/
 		// Use this for initialization
 		void Start () {
-			Debug.Log("Starting stuff...\n", gameObject);
-			SendGetRequest ();
-			Debug.Log("After GET request\n", gameObject);
+			//Debug.Log("Starting stuff...\n", gameObject);
+			//SendGetRequest ();
+			//Debug.Log("After GET request\n", gameObject);
 			//SendPostRequest ();
 			//Debug.Log("After POST request\n", gameObject);
 			//SendDeleteRequest ();
@@ -28,6 +28,14 @@ namespace Oddych{
 			//Debug.Log ("before Get NEW");
 			//SendGetRequestNew();
 			//Debug.Log ("after Get NEW");
+
+			//Test SpecialCoroutines
+			//Test1 test1 = gameObject.AddComponent<Test1> ();
+			//test1.Start ();
+			//Test2 test2 = gameObject.AddComponent<Test2> ();
+			//test2.Start ();
+			Test3 test3 = gameObject.AddComponent<Test3> ();
+			test3.Start ();
 		}
 
 		// Update is called once per frame
