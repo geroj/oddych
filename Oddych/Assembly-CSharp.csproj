@@ -46,10 +46,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Src\JSON\JsonSerializer.cs" />
+     <Compile Include="Assets\Src\Restifizer\IErrorHandler.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerError.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerErrorFactory.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerManager.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerParams.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerRequest.cs" />
+     <Compile Include="Assets\Src\Restifizer\RestifizerResponse.cs" />
      <Compile Include="Assets\Src\SpecialCoroutines\SpecialCoroutines.cs" />
      <Compile Include="Assets\Src\SpecialCoroutines\TestSpecialCoroutines.cs" />
      <Compile Include="Assets\Src\TestEntryPoint.cs" />
      <Compile Include="Assets\Src\WebRequests\RestMethods.cs" />
+     <Compile Include="Assets\Src\WebRequests\RestRequest.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
