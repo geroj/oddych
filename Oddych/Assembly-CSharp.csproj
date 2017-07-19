@@ -46,9 +46,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Src\RestManagerTest.cs" />
      <Compile Include="Assets\Src\SpecialCoroutines\SpecialCoroutines.cs" />
      <Compile Include="Assets\Src\SpecialCoroutines\TestSpecialCoroutines.cs" />
+     <Compile Include="Assets\Src\TestEntryPoint.cs" />
      <Compile Include="Assets\Src\WebRequests\DeleteMethod.cs" />
      <Compile Include="Assets\Src\WebRequests\GetMethod.cs" />
      <Compile Include="Assets\Src\WebRequests\PatchMethod.cs" />
