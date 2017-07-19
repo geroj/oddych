@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-
 namespace Oddych{
 	/// <summary>
 	/// Application entry point used for testing
@@ -25,11 +24,17 @@ namespace Oddych{
 			//test3.Start ();
 
 			const String _URL = "http://jsonplaceholder.typicode.com/comments";
+			const String _WEBDATA = 
+				//"{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"some fancy title by Ondrej Mikulas\"}";
+				"{\n  \"userId\": 1,\n \"title\": \"some fancy title by Ondrej Mikulas\"}";
+
 			for (int i = 0; i < 10; i++) {
 				Debug.Log (DateTime.Now.ToString("hh:mm:ss.fff") +  " BEFORE getting data");
-				GetMethod getMethod = gameObject.AddComponent<GetMethod> ();
-				String data = getMethod.GetData (_URL);
-				//Debug.Log (data);
+				RestMethods restMethods = gameObject.AddComponent<RestMethods> ();
+				//String data = restMethods.Get (_URL);
+				String data = restMethods.Post (_URL, _WEBDATA);
+				//long data = restMethods.Delete (_URL);
+				Debug.Log (data);
 				Debug.Log(DateTime.Now.ToString("hh:mm:ss.fff") + " AFTER getting data");
 			}
 		}
@@ -37,26 +42,5 @@ namespace Oddych{
 		// Update is called once per frame
 		void Update () {
 		}
-
-		void SendPostRequest(){
-			
-			PostMethod test = gameObject.AddComponent<PostMethod>();
-			const String _URL = "http://jsonplaceholder.typicode.com/posts";
-			const String _WEBDATA = 
-				//"{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"some fancy title by Ondrej Mikulas\"}";
-				"{\n  \"userId\": 1,\n \"title\": \"some fancy title by Ondrej Mikulas\"}";
-			test.Start(_URL, _WEBDATA);
-			test.Start(_URL, _WEBDATA);
-			test.Start(_URL, _WEBDATA);
-			test.Start(_URL, _WEBDATA);
-			Debug.Log ("som tu");
-		}
-
-		//void SendDeleteRequest(){
-		//	GetMethod test = gameObject.AddComponent<GetMethod>();
-		//	const String _URL = "http://jsonplaceholder.typicode.com/posts";
-		//	test.Start(_URL);
-		//	Debug.Log ("som tu");
-		//}
 	} //class
 } //namespace
