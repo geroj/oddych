@@ -118,11 +118,7 @@ namespace Oddych
 		/// <param name="url">remote url</param>
 		/// <param name="data">data to be send on server</param>
 		IEnumerator PostCoroutine(String url, String data){
-			//TODO Mock, remove!!!
-			List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-			formData.Add( new MultipartFormDataSection("field1=body&field2=postId") );
-			formData.Add( new MultipartFormFileSection("Ondrej", "Mikulas") );
-			UnityWebRequest www = UnityWebRequest.Post (url, formData);
+			UnityWebRequest www = UnityWebRequest.Post (url, data);
 
 			//UnityWebRequest www = UnityWebRequest.Post (url, data);
 			Result = www;
