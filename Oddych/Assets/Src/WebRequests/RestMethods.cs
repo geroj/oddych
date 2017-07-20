@@ -23,11 +23,11 @@ namespace Oddych
 		/// Get the data from specified url.
 		/// </summary>
 		/// <param name="url">URL.</param>
-		public String Get(String url){
+		public UnityWebRequest Get(String url){
 			StartCoroutine (GetSpecialCoroutine (url));
 			while (!Result.isDone) {
 			}
-			return Result.downloadHandler.text;
+			return Result;
 		}
 
 		/// <summary>
@@ -35,22 +35,22 @@ namespace Oddych
 		/// </summary>
 		/// <param name="url">URL.</param>
 		/// <param name="data">Data.</param>
-		public String Post(String url, String data){
+		public UnityWebRequest Post(String url, String data){
 			StartCoroutine (PostSpecialCoroutine (url, data));
 			while (!Result.isDone) {
 			}
-			return Result.downloadHandler.text;
+			return Result;
 		}
 
 		/// <summary>
 		/// Deletes the data from specified url.
 		/// </summary>
 		/// <param name="url">URL.</param>
-		public long Delete(String url){
+		public UnityWebRequest Delete(String url){
 			StartCoroutine (DeleteSpecialCoroutine (url));
 			while (!Result.isDone) {
 			}
-			return Result.responseCode;
+			return Result;
 		}
 
 		/*******************
@@ -118,7 +118,13 @@ namespace Oddych
 		/// <param name="url">remote url</param>
 		/// <param name="data">data to be send on server</param>
 		IEnumerator PostCoroutine(String url, String data){
-			UnityWebRequest www = UnityWebRequest.Post (url, data);
+			//TODO Mock, remove!!!
+			List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
+			formData.Add( new MultipartFormDataSection("field1=body&field2=postId") );
+			formData.Add( new MultipartFormFileSection("Ondrej", "Mikulas") );
+			UnityWebRequest www = UnityWebRequest.Post (url, formData);
+
+			//UnityWebRequest www = UnityWebRequest.Post (url, data);
 			Result = www;
 			www.Send ();
 			while (!www.isDone) {

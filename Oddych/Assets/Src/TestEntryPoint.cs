@@ -23,7 +23,8 @@ namespace Oddych{
 			//Test3 test3 = gameObject.AddComponent<Test3> ();
 			//test3.Start ();
 
-			const String _URL = "http://jsonplaceholder.typicode.com/comments?postId=1";
+			/*
+			const String _URL = "http://jsonplaceholder.typicode.com/comments";
 			//const String _WEBDATA = 
 				//"{\n  \"userId\": 1,\n  \"id\": 1,\n  \"title\": \"some fancy title by Ondrej Mikulas\"}";
 				//"{\n  \"userId\": 1,\n \"title\": \"some fancy title by Ondrej Mikulas\"}";
@@ -40,10 +41,64 @@ namespace Oddych{
 				DateTime endTime = DateTime.Now;
 				Debug.Log("delta (end - start): " + endTime.Subtract(startTime));
 			}
+			*/
+
+			/*
+			for (int i = 0; i < 100; i++) {
+				const String _URL2 = "https://www.bitstamp.net/api/v2/ticker/xrpusd";
+				//const String _WEBDATA = 
+				//"\"userId\": 1," +
+				//"\"id\": 105,\"" +
+				//"\"title\": \"super fancy title\"," +
+				//"\"body\": \"fancy body!\"";
+				DateTime startTime = DateTime.Now;
+				RestRequest req = new RestRequest ("GET", _URL2, gameObject, new Hashtable());
+
+				req.Send ();
+				Debug.Log (req.responseCode);
+				Debug.Log (req.responseText);
+				DateTime endTime = DateTime.Now;
+				Debug.Log("delta (end - start): " + endTime.Subtract(startTime));
+			}
+			*/
+
+			/*
+			for (int i = 0; i < 5; i++) {
+				const String _URL3 = "localhost:3000/comments";
+				DateTime startTime = DateTime.Now;
+				RestRequest req = new RestRequest ("GET", _URL3, gameObject, new Hashtable ());
+
+				req.Send ();
+				Debug.Log (req.responseCode);
+				Debug.Log (req.responseText);
+				DateTime endTime = DateTime.Now;
+				Debug.Log ("delta (end - start): " + endTime.Subtract (startTime));
+			}
+			*/
+
+
+			for (int i = 0; i < 5; i++) {
+				const String _URL3 = "localhost:3000/comments";
+				DateTime startTime = DateTime.Now;
+				const String _DATA = "{ \"id\": 1, \"body\": \"some comment\", \"postId\": 1 }";
+
+				RestRequest req = new RestRequest ("POST", _URL3, gameObject, _DATA, new Hashtable ());
+
+				req.Send ();
+				Debug.Log (req.responseCode);
+				Debug.Log (req.responseText);
+				DateTime endTime = DateTime.Now;
+				Debug.Log ("delta (end - start): " + endTime.Subtract (startTime));
+			}
+
+
+			// End of execution
+			Application.Quit();	
 		}
 
 		// Update is called once per frame
 		void Update () {
+			Application.Quit();	
 		}
 	} //class
 } //namespace
